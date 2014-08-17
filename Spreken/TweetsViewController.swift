@@ -15,14 +15,14 @@ class TweetsViewController: UITableViewController {
 
         let translator = Polyglot(clientId: "", clientSecret: "")
 
-            var english = "Hallo wereld"
-            translator.translate(english) { translation in
-                println(String(format: "\"%@\" means \"%@\"", english, translation))
-                var english2 = "Ik weet het niet"
-                translator.translate(english2) { translation in
-                    println(String(format: "\"%@\" means \"%@\"", english2, translation))
-                }
+        var english = "Hallo wereld"
+        translator.translate(english) { translation in
+            println(String(format: "\"%@\" means \"%@\"", english, translation))
+            var english2 = "Ik weet het niet"
+            translator.translate(english2) { translation in
+                println(String(format: "\"%@\" means \"%@\"", english2, translation))
             }
+        }
     }
 
     override func didReceiveMemoryWarning() {
