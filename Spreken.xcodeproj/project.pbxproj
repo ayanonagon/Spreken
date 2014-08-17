@@ -16,6 +16,8 @@
 		B6B42DB019A05D7300D496C9 /* Polyglot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B42DAD19A05D7300D496C9 /* Polyglot.swift */; };
 		B6B42DB119A05D7300D496C9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B42DAE19A05D7300D496C9 /* Session.swift */; };
 		B6B42DB219A05D7300D496C9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B42DAF19A05D7300D496C9 /* StringExtension.swift */; };
+		B6B42DBB19A06ABF00D496C9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B42DBA19A06ABF00D496C9 /* Social.framework */; };
+		B6E7589419A0748900E3EE48 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7589319A0748900E3EE48 /* Accounts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		B6B42DAD19A05D7300D496C9 /* Polyglot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Polyglot.swift; path = Polyglot/Polyglot.swift; sourceTree = "<group>"; };
 		B6B42DAE19A05D7300D496C9 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Polyglot/Session.swift; sourceTree = "<group>"; };
 		B6B42DAF19A05D7300D496C9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Polyglot/StringExtension.swift; sourceTree = "<group>"; };
+		B6B42DBA19A06ABF00D496C9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		B6E7589319A0748900E3EE48 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C6B32DA4D95C46BC87E5AC0F /* libPods-Spreken.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spreken.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -51,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E7589419A0748900E3EE48 /* Accounts.framework in Frameworks */,
+				B6B42DBB19A06ABF00D496C9 /* Social.framework in Frameworks */,
 				53985F4627AA475F8BCB038C /* libPods-Spreken.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +143,8 @@
 		F1108DD9B2EA493A95FB474E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6E7589319A0748900E3EE48 /* Accounts.framework */,
+				B6B42DBA19A06ABF00D496C9 /* Social.framework */,
 				C6B32DA4D95C46BC87E5AC0F /* libPods-Spreken.a */,
 			);
 			name = Frameworks;
@@ -193,6 +201,7 @@
 				TargetAttributes = {
 					B689D9A619837213009136FE = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 55377VK7X2;
 					};
 					B689D9B819837213009136FE = {
 						CreatedOnToolsVersion = 6.0;
@@ -331,7 +340,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -348,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -373,7 +382,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -384,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -398,9 +407,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Spreken/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spreken/Spreken-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -413,9 +425,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Spreken/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spreken/Spreken-Bridging-Header.h";
 			};
 			name = Release;
