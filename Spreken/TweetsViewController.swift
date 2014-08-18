@@ -10,14 +10,18 @@ import UIKit
 import Social
 import Accounts
 
-class TweetsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate {
 
-    let accountStore: ACAccountStore;
+    let accountStore: ACAccountStore
+    var accounts: Array<ACAccount>
+    var account: ACAccount?
     let translator: Polyglot
+
     var tweets: Array<Tweet>
 
     required init(coder aDecoder: NSCoder!) {
         accountStore = ACAccountStore()
+        accounts = []
         translator = Polyglot(clientId: "", clientSecret: "")
         tweets = []
         super.init(coder: aDecoder)
@@ -33,20 +37,18 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
             self.accountStore.requestAccessToAccountsWithType(twitterAccountType, options: nil) {
                 granted, error in
                 if granted {
-                    let twitterAccounts = self.accountStore.accountsWithAccountType(twitterAccountType)
+                    let twitterAccounts = self.accountStore.accountsWithAccountType(twitterAccountType) as Array<ACAccount>
                     if twitterAccounts.count == 0 {
                         let alertView = UIAlertView(title: "No Twitter accounts found",
                                                     message: "Please add a Twitter account in Settings.",
                                                     delegate: nil, cancelButtonTitle: "OK")
                         alertView.show()
+                    } else if twitterAccounts.count == 1 {
+                        self.account = twitterAccounts[0] as ACAccount
+                        self.reloadFeed()
                     } else {
-                        let twitterAccount = twitterAccounts[0] as ACAccount
-                        Tweet.fetchAll(twitterAccount) { tweets in
-                            self.tweets = tweets
-                            NSOperationQueue.mainQueue().addOperationWithBlock {
-                                self.tableView.reloadData()
-                            }
-                        }
+                        self.accounts = twitterAccounts
+                        self.presentAccountPicker(twitterAccounts)
                     }
                 }
             }
@@ -55,6 +57,33 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     func userHasAccessToTwitter() -> Bool {
         return SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+    }
+
+    func presentAccountPicker(accounts: Array<ACAccount>) {
+        let accountPickerSheet = UIActionSheet(title: "Please choose an account", delegate: self, cancelButtonTitle: nil, destructiveButtonTitle: nil)
+        for twitterAccount in accounts {
+            accountPickerSheet.addButtonWithTitle(twitterAccount.username)
+        }
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            accountPickerSheet.showInView(self.view)
+        }
+    }
+
+    func reloadFeed() {
+        Tweet.fetchAll(self.account!) { tweets in
+            self.tweets = tweets
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+
+    // MARK: - UIActionSheetDelegate
+
+    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+        self.account = self.accounts[buttonIndex]
+        self.reloadFeed()
     }
 
 
