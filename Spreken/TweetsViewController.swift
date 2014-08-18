@@ -10,7 +10,7 @@ import UIKit
 import Social
 import Accounts
 
-class TweetsViewController: UITableViewController, UITableViewDataSource {
+class TweetsViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
 
     let accountStore: ACAccountStore;
     let translator: Polyglot
@@ -27,9 +27,6 @@ class TweetsViewController: UITableViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "TweetCell")
-
-        var english = "Hallo wereld"
-        self.translateToEnglish("Hallo wereld")
 
         if (self.userHasAccessToTwitter()) {
             let twitterAccountType = self.accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -60,12 +57,6 @@ class TweetsViewController: UITableViewController, UITableViewDataSource {
         return SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
     }
 
-    func translateToEnglish(text: String) {
-        self.translator.translate(text) { translation in
-            println(String(format: "\"%@\" means \"%@\"", text, translation))
-        }
-    }
-
 
     // MARK: - UITableViewDataSource
 
@@ -78,5 +69,15 @@ class TweetsViewController: UITableViewController, UITableViewDataSource {
         let text = self.tweets[indexPath.row].text
         cell.textLabel.text = text
         return cell
+    }
+
+
+    // MARK: - UITableViewDelegate
+
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let tweet = self.tweets[indexPath.row]
+        self.translator.translate(tweet.text) { translation in
+            println(translation)
+        }
     }
 }
