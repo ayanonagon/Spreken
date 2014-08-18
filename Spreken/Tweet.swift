@@ -15,8 +15,8 @@ class Tweet {
     class func fetchAll(account: ACAccount, callback:(Array<Tweet> -> Void)?) {
         let url = NSURL.URLWithString("https://api.twitter.com/1.1/statuses/user_timeline/\(account.username).json")
         let params = ["include_rts": "true",
-            "trim_user" : "1",
-            "count": "2"]
+                      "trim_user" : "1",
+                      "count": "100"]
 
         let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: params)
         request.account = account
