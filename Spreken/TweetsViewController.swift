@@ -34,6 +34,10 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
         self.tableView.registerNib(UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TweetTableViewCell");
         self.tableView.rowHeight = 100.0;
 
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "reloadFeed", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
+
         if (self.userHasAccessToTwitter()) {
             let twitterAccountType = self.accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
             self.accountStore.requestAccessToAccountsWithType(twitterAccountType, options: nil) {
@@ -72,10 +76,13 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
     }
 
     func reloadFeed() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         Tweet.fetchAll(self.account!) { tweets in
             self.tweets = tweets
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 self.tableView.reloadData()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                self.refreshControl.endRefreshing()
             }
         }
     }
