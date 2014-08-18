@@ -46,7 +46,6 @@ class Tweet {
                     } else {
                         println("JSON Error: \(jsonError?.localizedDescription)")
                     }
-
                 } else {
                     println("Got unsuccessful status code: \(urlResponse.statusCode)")
                 }
