@@ -10,7 +10,7 @@ import UIKit
 import Social
 import Accounts
 
-class TweetsViewController: UITableViewController {
+class TweetsViewController: UITableViewController, UITableViewDataSource {
 
     let accountStore: ACAccountStore;
     let translator: Polyglot
@@ -25,6 +25,8 @@ class TweetsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "TweetCell")
 
         var english = "Hallo wereld"
         self.translateToEnglish("Hallo wereld")
@@ -44,6 +46,9 @@ class TweetsViewController: UITableViewController {
                         let twitterAccount = twitterAccounts[0] as ACAccount
                         Tweet.fetchAll(twitterAccount) { tweets in
                             self.tweets = tweets
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                self.tableView.reloadData()
+                            }
                         }
                     }
                 }
@@ -59,5 +64,19 @@ class TweetsViewController: UITableViewController {
         self.translator.translate(text) { translation in
             println(String(format: "\"%@\" means \"%@\"", text, translation))
         }
+    }
+
+
+    // MARK: - UITableViewDataSource
+
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return self.tweets.count
+    }
+
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        let cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as UITableViewCell
+        let text = self.tweets[indexPath.row].text
+        cell.textLabel.text = text
+        return cell
     }
 }
