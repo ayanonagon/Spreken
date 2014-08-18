@@ -12,7 +12,17 @@ import Accounts
 
 class Tweet {
 
-    class func fetchAll(account: ACAccount, callback:(Array<Tweet> -> Void)?) {
+    let text: String
+
+    var description: String {
+        return "Tweet: \(self.text)"
+    }
+
+    init(text: String) {
+        self.text = text
+    }
+
+    class func fetchAll(account: ACAccount, callback:((tweets: Array<Tweet>) -> Void)?) {
         let url = NSURL.URLWithString("https://api.twitter.com/1.1/statuses/user_timeline/\(account.username).json")
         let params = ["include_rts": "true",
                       "trim_user" : "1",
@@ -24,9 +34,15 @@ class Tweet {
             if (responseData != nil) {
                 if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
                     var jsonError: NSError?
-                    let timelineData: AnyObject! = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments, error: &jsonError)
+                    let timelineData = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments, error: &jsonError) as NSArray
                     if (timelineData != nil) {
-                        println("\(timelineData)")
+                        var tweets: Array<Tweet> = []
+                        for tweetDict in timelineData {
+                            let text = tweetDict.valueForKey("text") as String
+                            let tweet = Tweet(text: text)
+                            tweets.append(tweet)
+                        }
+                        callback?(tweets: tweets)
                     } else {
                         println("JSON Error: \(jsonError?.localizedDescription)")
                     }

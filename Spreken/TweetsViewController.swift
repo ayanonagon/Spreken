@@ -14,10 +14,12 @@ class TweetsViewController: UITableViewController {
 
     let accountStore: ACAccountStore;
     let translator: Polyglot
+    var tweets: Array<Tweet>
 
     required init(coder aDecoder: NSCoder!) {
         accountStore = ACAccountStore()
         translator = Polyglot(clientId: "", clientSecret: "")
+        tweets = []
         super.init(coder: aDecoder)
     }
 
@@ -40,7 +42,9 @@ class TweetsViewController: UITableViewController {
                         alertView.show()
                     } else {
                         let twitterAccount = twitterAccounts[0] as ACAccount
-                        Tweet.fetchAll(twitterAccount, callback: nil)
+                        Tweet.fetchAll(twitterAccount) { tweets in
+                            self.tweets = tweets
+                        }
                     }
                 }
             }
