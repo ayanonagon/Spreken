@@ -34,12 +34,13 @@ class TweetsViewController: UITableViewController {
                 if granted {
                     let twitterAccounts = self.accountStore.accountsWithAccountType(twitterAccountType)
                     if twitterAccounts.count == 0 {
-                        let alertView = UIAlertView(title: "No Twitter accounts found", message: "Please add a Twitter account in Settings.",
+                        let alertView = UIAlertView(title: "No Twitter accounts found",
+                                                    message: "Please add a Twitter account in Settings.",
                                                     delegate: nil, cancelButtonTitle: "OK")
                         alertView.show()
                     } else {
                         let twitterAccount = twitterAccounts[0] as ACAccount
-                        // TODO: Do something with this account.
+                        Tweet.fetchAll(twitterAccount, callback: nil)
                     }
                 }
             }

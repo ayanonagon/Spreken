@@ -18,6 +18,7 @@
 		B6B42DB219A05D7300D496C9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B42DAF19A05D7300D496C9 /* StringExtension.swift */; };
 		B6B42DBB19A06ABF00D496C9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B42DBA19A06ABF00D496C9 /* Social.framework */; };
 		B6E7589419A0748900E3EE48 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7589319A0748900E3EE48 /* Accounts.framework */; };
+		B6E7589619A17D2D00E3EE48 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7589519A17D2D00E3EE48 /* Tweet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B6B42DAF19A05D7300D496C9 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Polyglot/StringExtension.swift; sourceTree = "<group>"; };
 		B6B42DBA19A06ABF00D496C9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B6E7589319A0748900E3EE48 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		B6E7589519A17D2D00E3EE48 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C6B32DA4D95C46BC87E5AC0F /* libPods-Spreken.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spreken.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 			children = (
 				B689D9AC19837213009136FE /* AppDelegate.swift */,
 				B689D9C919837327009136FE /* TweetsViewController.swift */,
+				B6E7589519A17D2D00E3EE48 /* Tweet.swift */,
 				B689D9B019837213009136FE /* Main.storyboard */,
 				B689D9B319837213009136FE /* Images.xcassets */,
 				B6B42DAC19A05D4700D496C9 /* Polyglot */,
@@ -288,6 +291,7 @@
 				B6B42DB119A05D7300D496C9 /* Session.swift in Sources */,
 				B6B42DB019A05D7300D496C9 /* Polyglot.swift in Sources */,
 				B6B42DB219A05D7300D496C9 /* StringExtension.swift in Sources */,
+				B6E7589619A17D2D00E3EE48 /* Tweet.swift in Sources */,
 				B689D9AD19837213009136FE /* AppDelegate.swift in Sources */,
 				B689D9CA19837327009136FE /* TweetsViewController.swift in Sources */,
 			);
