@@ -15,6 +15,7 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
     let accountStore: ACAccountStore
     var accounts: Array<ACAccount>
     var account: ACAccount?
+
     let translator: Polyglot
 
     var tweets: Array<Tweet>
@@ -30,7 +31,8 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "TweetCell")
+        self.tableView.registerNib(UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TweetTableViewCell");
+        self.tableView.rowHeight = 100.0;
 
         if (self.userHasAccessToTwitter()) {
             let twitterAccountType = self.accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -94,9 +96,9 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as UITableViewCell
+        let cell: TweetTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TweetTableViewCell", forIndexPath: indexPath) as TweetTableViewCell
         let text = self.tweets[indexPath.row].text
-        cell.textLabel.text = text
+        cell.tweetTextLabel.text = text
         return cell
     }
 
