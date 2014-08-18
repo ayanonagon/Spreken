@@ -108,7 +108,9 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let tweet = self.tweets[indexPath.row]
         self.translator.translate(tweet.text) { translation in
-            println(translation)
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                UIAlertView(title: nil, message: translation, delegate: nil, cancelButtonTitle: "OK").show()
+            }
         }
     }
 }
