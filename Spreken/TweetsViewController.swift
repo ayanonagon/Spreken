@@ -114,9 +114,11 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let tweet = self.tweets[indexPath.row]
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.translator.translate(tweet.text) { translation in
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 UIAlertView(title: nil, message: translation, delegate: nil, cancelButtonTitle: "OK").show()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         }
     }
