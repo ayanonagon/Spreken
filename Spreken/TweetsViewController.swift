@@ -32,7 +32,6 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
 
         self.tableView.registerNib(UINib(nibName: "TweetTableViewCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TweetTableViewCell");
-        self.tableView.rowHeight = 100.0;
         self.tableView.estimatedRowHeight = 44.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
 
