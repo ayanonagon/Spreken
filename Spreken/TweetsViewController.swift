@@ -20,7 +20,7 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     var tweets: Array<Tweet>
 
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         accountStore = ACAccountStore()
         accounts = []
         translator = Polyglot(clientId: "", clientSecret: "")
@@ -82,7 +82,7 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 self.tableView.reloadData()
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                self.refreshControl.endRefreshing()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
@@ -98,11 +98,11 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     // MARK: - UITableViewDataSource
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tweets.count
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: TweetTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TweetTableViewCell", forIndexPath: indexPath) as TweetTableViewCell
         let text = self.tweets[indexPath.row].text
         cell.tweetTextLabel.text = text
@@ -112,7 +112,7 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     // MARK: - UITableViewDelegate
 
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let tweet = self.tweets[indexPath.row]
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.translator.translate(tweet.text) { translation in

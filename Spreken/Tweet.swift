@@ -34,10 +34,10 @@ class Tweet {
             if (responseData != nil) {
                 if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
                     var jsonError: NSError?
-                    let timelineData = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments, error: &jsonError) as NSArray
+                    let timelineData = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments, error: &jsonError) as NSArray?
                     if (timelineData != nil) {
                         var tweets: Array<Tweet> = []
-                        for tweetDict in timelineData {
+                        for tweetDict in timelineData! {
                             let text = tweetDict.valueForKey("text") as String
                             let tweet = Tweet(text: text)
                             tweets.append(tweet)

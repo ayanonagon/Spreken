@@ -30,21 +30,19 @@ class Session {
     var accessToken: String?
     var expirationTime: NSDate?
 
-    init(clientId: String, clientSecret: String)
-    {
+    init(clientId: String, clientSecret: String) {
         self.clientId = clientId
         self.clientSecret = clientSecret
     }
 
-    func getAccessToken(callback: ((token: String) -> (Void)))
-    {
+    func getAccessToken(callback: ((token: String) -> (Void))) {
         if ((self.accessToken == nil) || self.isExpired) {
             let url = NSURL(string: "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13")
 
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
 
-            let bodyString = "client_id=" + clientId.urlEncoded + "&client_secret=" + clientSecret.urlEncoded + "&scope=http://api.microsofttranslator.com&grant_type=client_credentials"
+            let bodyString = "client_id=\(clientId.urlEncoded!)&client_secret=\(clientSecret.urlEncoded!)&scope=http://api.microsofttranslator.com&grant_type=client_credentials"
             request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding)
 
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {(data, response, error) in
@@ -65,8 +63,7 @@ class Session {
         }
     }
 
-    private var isExpired: Bool
-    {
+    private var isExpired: Bool {
         return self.expirationTime?.earlierDate(NSDate()) == self.expirationTime
     }
 }
