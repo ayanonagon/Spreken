@@ -106,8 +106,26 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: TweetTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("TweetTableViewCell", forIndexPath: indexPath) as TweetTableViewCell
-        let text = self.tweets[indexPath.row].text
-        cell.tweetTextLabel.text = text
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
+        cell.profileImageView.layer.masksToBounds = true
+
+        // Set tweet text
+        let tweet = self.tweets[indexPath.row]
+        cell.tweetTextLabel.text = tweet.text
+
+        // Set profile image
+        let profileImageURL = tweet.user.profileImageURL
+        let request: NSURLRequest = NSURLRequest(URL: profileImageURL)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
+            if error == nil {
+                let image = UIImage(data: data)
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell {
+                        cellToUpdate.profileImageView?.image = image
+                    }
+                })
+            }
+        })
         return cell
     }
 

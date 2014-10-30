@@ -16,20 +16,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupcake ipsum dolor. Sit amet gummies cookie brownie chocolate cake jelly beans danish dessert." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="304" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-8b-xgb">
-                        <rect key="frame" x="15" y="8" width="290" height="80"/>
+                        <rect key="frame" x="73" y="8" width="232" height="80"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TUl-7f-Nd6">
+                        <rect key="frame" x="15" y="15" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="2gd-wJ-926"/>
+                            <constraint firstAttribute="width" constant="44" id="4Ml-FM-KSs"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="TUl-7f-Nd6" secondAttribute="bottom" constant="7" id="AOg-Wl-rky"/>
+                    <constraint firstItem="TUl-7f-Nd6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="AwW-qq-shk"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-7" id="BMV-A4-ARo"/>
+                    <constraint firstItem="TUl-7f-Nd6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="HnL-YS-EcV"/>
+                    <constraint firstItem="oHM-8b-xgb" firstAttribute="leading" secondItem="TUl-7f-Nd6" secondAttribute="trailing" constant="14" id="HwI-BN-G3I"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="JY3-kz-wBg"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="USu-n5-gRc"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="oqt-Ln-TLF"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="JY3-kz-wBg"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="profileImageView" destination="TUl-7f-Nd6" id="TpA-8O-W1P"/>
                 <outlet property="tweetTextLabel" destination="oHM-8b-xgb" id="D3d-FU-OdP"/>
             </connections>
             <point key="canvasLocation" x="467" y="436"/>
