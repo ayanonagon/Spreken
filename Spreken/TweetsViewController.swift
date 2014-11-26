@@ -111,6 +111,7 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
         // Set tweet text
         let tweet = self.tweets[indexPath.row]
         cell.tweetTextLabel.text = tweet.text
+        cell.translationTextLabel.text = tweet.translation
 
         // Set profile image
         let profileImageURL = tweet.user.profileImageURL
@@ -136,7 +137,8 @@ class TweetsViewController: UITableViewController, UITableViewDataSource, UITabl
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.translator.translate(tweet.text) { translation in
             NSOperationQueue.mainQueue().addOperationWithBlock {
-                UIAlertView(title: nil, message: translation, delegate: nil, cancelButtonTitle: "OK").show()
+                tweet.translation = translation;
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimation.Automatic)
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         }

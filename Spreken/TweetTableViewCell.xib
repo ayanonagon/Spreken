@@ -16,7 +16,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupcake ipsum dolor. Sit amet gummies cookie brownie chocolate cake jelly beans danish dessert." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="304" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-8b-xgb">
-                        <rect key="frame" x="73" y="8" width="232" height="141.5"/>
+                        <rect key="frame" x="73" y="8" width="232" height="54"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="232" id="GYr-9y-Hcu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -28,28 +31,34 @@
                             <constraint firstAttribute="width" constant="44" id="4Ml-FM-KSs"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cupcake ipsum dolor. Sit amet gummies cookie brownie chocolate cake jelly beans danish dessert." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjU-fp-MiG">
+                        <rect key="frame" x="73" y="72" width="232" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="232" id="mQO-ui-ueN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="TUl-7f-Nd6" secondAttribute="bottom" constant="7" id="AOg-Wl-rky"/>
                     <constraint firstItem="TUl-7f-Nd6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="AwW-qq-shk"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-7" id="BMV-A4-ARo"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="FjU-fp-MiG" secondAttribute="bottom" constant="5" id="Ddc-w3-TsE"/>
                     <constraint firstItem="TUl-7f-Nd6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="HnL-YS-EcV"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="leading" secondItem="TUl-7f-Nd6" secondAttribute="trailing" constant="14" id="HwI-BN-G3I"/>
-                    <constraint firstItem="oHM-8b-xgb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="JY3-kz-wBg"/>
-                    <constraint firstItem="oHM-8b-xgb" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="USu-n5-gRc"/>
+                    <constraint firstItem="FjU-fp-MiG" firstAttribute="top" secondItem="oHM-8b-xgb" secondAttribute="bottom" constant="10" id="dIQ-QZ-pWZ"/>
                     <constraint firstItem="oHM-8b-xgb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="oqt-Ln-TLF"/>
+                    <constraint firstItem="FjU-fp-MiG" firstAttribute="leading" secondItem="oHM-8b-xgb" secondAttribute="leading" id="wrW-H1-ydH"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="JY3-kz-wBg"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="profileImageView" destination="TUl-7f-Nd6" id="TpA-8O-W1P"/>
+                <outlet property="profileImageView" destination="TUl-7f-Nd6" id="bpR-Ea-5yb"/>
+                <outlet property="translationTextLabel" destination="FjU-fp-MiG" id="3C2-FO-iIS"/>
                 <outlet property="tweetTextLabel" destination="oHM-8b-xgb" id="D3d-FU-OdP"/>
             </connections>
-            <point key="canvasLocation" x="467" y="467"/>
+            <point key="canvasLocation" x="467" y="461"/>
         </tableViewCell>
     </objects>
 </document>

@@ -15,6 +15,8 @@ class Tweet {
     let text: String
     let user: TwitterUser
 
+    var translation: String?
+
     var description: String {
         return "Tweet: \(self.text)"
     }

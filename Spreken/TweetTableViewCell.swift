@@ -11,6 +11,6 @@ import UIKit
 class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var translationTextLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-
 }
