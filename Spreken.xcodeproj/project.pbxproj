@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		904A4DC1F12B4B07A64E4049 /* Pods-Spreken.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spreken.xcconfig"; path = "Pods/Pods-Spreken.xcconfig"; sourceTree = "<group>"; };
+		457D4EC1860CF11960C56596 /* Pods-Spreken.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spreken.release.xcconfig"; path = "Pods/Target Support Files/Pods-Spreken/Pods-Spreken.release.xcconfig"; sourceTree = "<group>"; };
 		B6099DB41984A64B008C5B39 /* Spreken-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spreken-Bridging-Header.h"; sourceTree = "<group>"; };
 		B689D9A719837213009136FE /* Spreken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spreken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B689D9AB19837213009136FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +56,7 @@
 		B6E7589919A1B1D800E3EE48 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		B6E7589A19A1B1D800E3EE48 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		C6B32DA4D95C46BC87E5AC0F /* libPods-Spreken.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spreken.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1F55D4F3313C53AE383807 /* Pods-Spreken.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spreken.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spreken/Pods-Spreken.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BAD12E1C7A753E3406375BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F55D4F3313C53AE383807 /* Pods-Spreken.debug.xcconfig */,
+				457D4EC1860CF11960C56596 /* Pods-Spreken.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B689D99E19837213009136FE = {
 			isa = PBXGroup;
 			children = (
 				B689D9A919837213009136FE /* Spreken */,
 				B689D9BC19837213009136FE /* SprekenTests */,
 				B689D9A819837213009136FE /* Products */,
-				904A4DC1F12B4B07A64E4049 /* Pods-Spreken.xcconfig */,
 				F1108DD9B2EA493A95FB474E /* Frameworks */,
+				8BAD12E1C7A753E3406375BA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,7 +298,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Spreken-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Spreken/Pods-Spreken-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -418,7 +428,7 @@
 		};
 		B689D9C419837213009136FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 904A4DC1F12B4B07A64E4049 /* Pods-Spreken.xcconfig */;
+			baseConfigurationReference = FD1F55D4F3313C53AE383807 /* Pods-Spreken.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -436,7 +446,7 @@
 		};
 		B689D9C519837213009136FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 904A4DC1F12B4B07A64E4049 /* Pods-Spreken.xcconfig */;
+			baseConfigurationReference = 457D4EC1860CF11960C56596 /* Pods-Spreken.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
