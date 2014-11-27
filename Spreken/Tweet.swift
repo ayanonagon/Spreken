@@ -27,7 +27,7 @@ class Tweet {
     }
 
     class func fetchAll(account: ACAccount, callback:((tweets: Array<Tweet>) -> Void)?) {
-        let url = NSURL.URLWithString("https://api.twitter.com/1.1/statuses/home_timeline/\(account.username).json")
+        let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline/\(account.username).json")
         let params = ["include_rts": "true",
                       "trim_user" : "0",
                       "count": "100"]
@@ -46,7 +46,7 @@ class Tweet {
                             let name = tweetDict.valueForKeyPath("user.name") as String
                             let username = tweetDict.valueForKeyPath("user.screen_name") as String
                             let profileImageURLString = tweetDict.valueForKeyPath("user.profile_image_url") as String
-                            let twitterUser = TwitterUser(name: name, username: username, profileImageURL: NSURL(string: profileImageURLString))
+                            let twitterUser = TwitterUser(name: name, username: username, profileImageURL: NSURL(string: profileImageURLString)!)
                             let tweet = Tweet(text: text, user: twitterUser)
                             tweets.append(tweet)
                         }
